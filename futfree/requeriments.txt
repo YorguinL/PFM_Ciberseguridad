@@ -1,0 +1,6 @@
+pip install Flask
+pip install requests
+pip install pillow
+pip install qrcode
+pip install bleach
+pip install email_validator
