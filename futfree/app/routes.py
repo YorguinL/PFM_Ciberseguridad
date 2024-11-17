@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, redirect, url_for, request, flash, abort
 from email_validator import validate_email, EmailNotValidError
 from connection import Connection
+from .utils import sanitize_input, is_adult
 
 # Crear un blueprint para las rutas principales
 main_bp = Blueprint('main', __name__)
