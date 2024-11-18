@@ -124,7 +124,7 @@
             <p>Iniciar sesión con Google</p>
         </div>
         <h1>Inicia sesión</h1>
-        <form action="{{ url_for('log_connection') }}" method="post">
+        <form action="{{ url_for('main.log_connection') }}" method="post">
             <input type="hidden" name="form_id" value="signup">
             <input type="hidden" name="social" value="google">
             <div class="form-group">

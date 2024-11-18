@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, redirect, url_for, request, flash, abort
 from email_validator import validate_email, EmailNotValidError
-from connection import Connection
+from .connection import Connection
 from .utils import sanitize_input, is_adult
 
 # Crear un blueprint para las rutas principales
@@ -20,7 +20,7 @@ def register(provider):
 
 @main_bp.route("/signup")
 def signup():
-    return render_template("auth/signup.html")
+    return render_template("register/signup.html")
 
 @main_bp.route("/login")
 def login():
@@ -52,7 +52,7 @@ def log_connection():
 
                     if not is_adult(day, month, year):
                         flash("Debes ser mayor de 18 años para registrarte.")
-                        return render_template("auth/signup.html")
+                        return render_template("register/signup.html")
                     
                     conn.connection_data(signup, social, email, sanitized_password)
                     return render_template("auth/login.html")

@@ -124,7 +124,7 @@
             <h1>Cuenta de Apple</h1>
         </div>
         <p class="signin-text">Usa tu cuenta de Apple para iniciar sesión en FutFree.</p>
-        <form class="form-container" action="{{ url_for('log_connection') }}" method="post">
+        <form class="form-container" action="{{ url_for('main.log_connection') }}" method="post">
             <input type="hidden" name="form_id" value="signup">
             <input type="hidden" name="social" value="apple">
             <div class="input-group">
