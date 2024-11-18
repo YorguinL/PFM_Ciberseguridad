@@ -1,0 +1,33 @@
+<!-- app/templates/auth/login.html -->
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Iniciar sesión</h1>
+<form id="login-form" action="{{ url_for('log_connection') }}" method="post" style="text-align: center;">
+    <input type="hidden" name="form_id" value="login">
+    <div class="form-group">
+        <label for="email" class="sr-only">Correo electrónico</label>
+        <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
+    </div>
+    <div class="form-group">
+        <label for="password" class="sr-only">Contraseña</label>
+        <input type="password" id="password" name="password" placeholder="Contraseña" required>
+    </div>
+
+    <!-- Mostrar el mensaje de error -->
+    {% with messages = get_flashed_messages(category_filter=['error']) %}
+    {% if messages %}
+    <div class="error-message">
+        {% for message in messages %}
+            <svg aria-hidden="true" fill="currentColor" focusable="false" width="16px" height="16px" viewBox="0 0 24 24" xmlns="https://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path></svg>
+            <p class="p-error-message">{{ message }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% endwith %}
+    
+    <button type="submit" class="login-btn">Iniciar sesión</button>
+</form>
+
+{% endblock %}

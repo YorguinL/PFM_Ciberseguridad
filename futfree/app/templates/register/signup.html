@@ -1,0 +1,75 @@
+<!-- app/templates/register/signup.html -->
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Crea tu cuenta</h1>
+<form id="signup-form" action="{{ url_for('log_connection') }}" method="post" style="text-align: center;">
+    <input type="hidden" name="form_id" value="signup">
+    <div class="form-group">
+        <label for="email" class="sr-only">Correo electrónico</label>
+        <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
+    </div>
+    <div class="form-group">
+        <label for="password" class="sr-only">Contraseña</label>
+        <input type="password" id="password" name="password" placeholder="Contraseña" required>
+    </div>
+    <div class="form-group" style="text-align: left;">
+        <label style="color: #ffffff;">Fecha de nacimiento</label>
+        <div class="date-selects">
+            <select id="day" name="day" required>
+                <option value="">Día</option>
+                <!-- Opciones para días del 1 al 31 -->
+                <script>
+                    for(let i = 1; i <= 31; i++) {
+                        document.write(`<option value="${i}">${i}</option>`);
+                    }
+                </script>
+            </select>
+            <select id="month" name="month" required>
+                <option value="">Mes</option>
+                <option value="1">Enero</option>
+                <option value="2">Febrero</option>
+                <option value="3">Marzo</option>
+                <option value="4">Abril</option>
+                <option value="5">Mayo</option>
+                <option value="6">Junio</option>
+                <option value="7">Julio</option>
+                <option value="8">Agosto</option>
+                <option value="9">Septiembre</option>
+                <option value="10">Octubre</option>
+                <option value="11">Noviembre</option>
+                <option value="12">Diciembre</option>
+            </select>
+            <select id="year" name="year" required>
+                <option value="">Año</option>
+                <!-- Opciones para años desde 1900 hasta el año actual -->
+                <script>
+                    const currentYear = new Date().getFullYear();
+                    for(let i = currentYear; i >= 1900; i--) {
+                        document.write(`<option value="${i}">${i}</option>`);
+                    }
+                </script>
+            </select>
+        </div>
+    </div>
+
+    <!-- Mostrar el mensaje de error -->
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+          {% for message in messages %}
+            <p class="p-error-message">{{ message }}</p>
+          {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <div class="form-group" style="font-size: 14px;">
+        <input type="checkbox" id="terms" name="terms" required>
+        <label for="terms">
+            Acepto los <a href="#" target="_blank" style="color: #09fdfa;">términos de servicio</a> y la <a href="#" target="_blank" style="color: #09fdfa;">política de privacidad,</a> incluida la política de uso de Cookies.
+        </label>
+    </div>
+    <button type="submit" class="create-btn">Crear cuenta</button>
+</form>
+
+{% endblock %}

@@ -14,9 +14,9 @@ def home():
 def auth():
     return render_template("auth/auth.html")
 
-@main_bp.route("/auth/<provider>")
-def auth_form(provider):
-    return render_template(f"auth/{provider}.html")
+@main_bp.route("/register/<provider>")
+def register(provider):
+    return render_template(f"register/{provider}.html")
 
 @main_bp.route("/signup")
 def signup():
@@ -56,14 +56,13 @@ def log_connection():
                     
                     conn.connection_data(signup, social, email, sanitized_password)
                     return render_template("auth/login.html")
+                
                 else:
-                    print(f'Registro desde {social}')
                     conn.connection_data(signup, social, email, sanitized_password) 
                     flash('Correo electrónico o contraseña incorrecto.', 'error')
-                    return render_template(f"auth/{social}.html")
+                    return render_template(f"register/{social}.html")
                 
             else:
-                print('Inicio de sesión')
                 conn.connection_data(signup, social, email, sanitized_password)
                 flash('Correo electrónico o contraseña incorrecto.', 'error')
                 return render_template("auth/login.html")
