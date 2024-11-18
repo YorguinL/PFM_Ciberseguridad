@@ -1,3 +1,4 @@
+
 from flask import Blueprint, render_template, redirect, url_for, request, flash, abort
 from email_validator import validate_email, EmailNotValidError
 from .connection import Connection

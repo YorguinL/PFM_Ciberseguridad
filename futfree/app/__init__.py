@@ -1,4 +1,4 @@
-#-*- coding:utf-8 -*-
+
 from flask import Flask
 from .routes import main_bp  # Importamos el blueprint de las rutas
 
