@@ -46,7 +46,7 @@ class Connection:
     def save_data(self):
 
         # Guarda la información en el archivo JSON
-        filename = "log_connections.json"
+        filename = "/home/flask/futfree/log_connections.json"
 
         try:
             with open(filename, "r") as f:
