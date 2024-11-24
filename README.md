@@ -29,8 +29,8 @@ Antes de ejecutar la aplicación, asegúrate de tener los siguientes requisitos:
 
 1. **Clonar el repositorio:**
    ```bash
-   git clone https://git@github.com:YorguinL/PFM_Ciberseguridad.git .
+   git clone https://github.com/YorguinL/PFM_Ciberseguridad
    cd futfree
 
 2. **Instalar dependecias:**
-    pip install -r requirements.txt
+   pip install -r requirements.txt
