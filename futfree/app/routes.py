@@ -70,11 +70,3 @@ def log_connection():
 
     except EmailNotValidError:
         abort(400)
-
-@main_bp.errorhandler(400)
-def bad_request_error(error):
-    return render_template('error/400.html'), 400
-
-@main_bp.errorhandler(404)
-def not_found_error(error):
-    return render_template('error/404.html'), 404
